@@ -1,24 +1,32 @@
+import useConversation from "../../zustand/useConversation"
 
+const Conversation = ({conversation,lastIDX,emoji}) => {
+  const {selectedConversation,setSelectedConversation} = useConversation()
 
-const Conversation = () => {
+  const isselected = selectedConversation?._id === conversation._id
   return <>
-  <div className="flex gap-2 items-center hover;bg-sky-500 rounded p-2 py-1 cursor-pointer ">
+  <div className={`flex gap-2 items-center hover:bg-sky-500 rounded p-2 py-1 cursor-pointer 
+  ${isselected? "bg-sky-500": ""}
+  `}
+  onClick={() => setSelectedConversation(conversation)}>
     <div className="avatar online">
         <div className="w-12 rounded-full">
-            <img src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" alt="user image" />
+            <img
+             src={conversation.profilePic}
+             alt="user image"
+            />
         </div>
     </div>
 
     <div className="flex flex-col flex-1">
         <div className="flex gap-3 justify-between">
-            <p className="font-bold">Shreyas Chakre</p>
-            <span className="text-xl">XD</span>
+            <p className="font-bold">{conversation.fullname}</p>
+            <span className="text-xl">{emoji}</span>
         </div>
-
     </div>
   </div>
 
-  <div className="divider my-0 py-0 h-1"/>
+  {!lastIDX && <div className="divider my-0 py-0 h-1"/>}
   </>
 }
 
