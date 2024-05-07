@@ -2,7 +2,7 @@ import path from 'path'
 import express from 'express'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
-import connectToMongoDb from './db/connectToMongodb.js';
+import ConnectToMongoDb from './DB/ConnectToMongodb.js'
 
 import messageroutes from './Routes/message.routes.js'
 import authroutes from './Routes/auth.routes.js'
@@ -19,7 +19,7 @@ const __dirname = path.resolve()
 
 
 //app.get("/", (req,res) => {
-    // root route http://localhost:5000/
+    // root route http://localhost:5000/   
 //    res.send("Hello world")
 //})
 
@@ -39,7 +39,7 @@ app.get("*",(req,res) => {
 
 
 server.listen(port,() => {
-    connectToMongoDb()
+    ConnectToMongoDb()
     console.log(`server running on ${port}`);
 
 })
