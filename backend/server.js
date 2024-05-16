@@ -2,7 +2,7 @@ import path from 'path'
 import express from 'express'
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
-import ConnectToMongoDb from './DB/ConnectToMongodb.js'
+import ConnectToMongoDb from './backend/DB/ConnectToMongodb.js'
 
 import messageroutes from './Routes/message.routes.js'
 import authroutes from './Routes/auth.routes.js'
@@ -25,7 +25,6 @@ const __dirname = path.resolve()
 
 app.use(express.json())  //to parse incoming request with json payload (from req.body)
 app.use(cookieParser())
-
 app.use("/api/auth",authroutes)
 app.use("/api/messages",messageroutes)
 app.use("/api/users",userroutes)
